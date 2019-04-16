@@ -48,14 +48,13 @@ function uuid4() {
     'pageActivityId': pageViewActivityId,
     'sessionId': sessionId
   });
-
   // ga('create', 'UA-137952485-1', 'auto');
 
-  // ga(function(tracker) {
-  //   var clientId = tracker.get('clientId');
-  //   console.log('Cliend ID', clientId);
-  //   ga('set', 'ga:dimension1', clientId);
-  // });
+  ga(function(tracker) {
+    var clientId = tracker.get('clientId');
+    console.log('Cliend ID', clientId);
+    ga('set', 'ga:dimension4', clientId);
+  });
 </script>
 
 </html>
