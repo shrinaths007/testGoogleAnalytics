@@ -18,16 +18,34 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137952485-1"></script>
 <script src="https://www.googletagmanager.com/gtag/js?id=UA-137952485-1"></script>
 <script>
+
+function uuid4() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
+  var sessionId = sessionStorage.getItem('sessionId');
+  if (!sessionId) {
+    sessionId = uuid4();
+    sessionStorage.setItem('sessionId', sessionId);
+  }
+
   window.dataLayer = window.dataLayer || [];
   function gtag() { dataLayer.push(arguments); }
   gtag('js', new Date());
   gtag('config', 'UA-137952485-1', {
     'custom_map': {
       'dimension1': 'clientId',
-      'metric1': 'session_page_view'
+      'dimension2': 'sessionId',
+      'dimension3': 'pageViewId'
     }
   });
-  // gtag('event', 'hitType', { 'session_page_view': 1 });
+
+  gtag('event', 'session_start', {'sessionId': sessionId});
+  gtag('event', 'pageview', {'pageViewId': uuid4()});
+
   // ga('create', 'UA-137952485-1', 'auto');
 
   // ga(function(tracker) {
