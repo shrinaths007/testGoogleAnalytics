@@ -40,16 +40,14 @@ function uuid4() {
       'dimension1': 'clientId',
       'dimension2': 'sessionId',
       'dimension3': 'pageActivityId'
-    }
+    },
+    'send_page_view': false
   });
 
-  // gtag('set', {
-  //   'pageActivityId': pageViewActivityId,
-  //   'sessionId': sessionId
-  // })
-
-  gtag('event', 'page_view', {'pageActivityId': pageViewActivityId});
-  gtag('event', 'session_start', {'sessionId': sessionId});
+  gtag('event', 'page_view', {
+    'pageActivityId': pageViewActivityId,
+    'sessionId': sessionId
+  });
 
   // ga('create', 'UA-137952485-1', 'auto');
 
