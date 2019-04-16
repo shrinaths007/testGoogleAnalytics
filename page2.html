@@ -44,8 +44,13 @@ function uuid4() {
     }
   });
 
-  gtag('event', 'page_view_activity', {'pageActivityId': pageViewActivityId});
-  gtag('event', 'session_start', {'sessionId': sessionId});
+  gtag('set', {
+    'pageActivityId': pageViewActivityId,
+    'sessionId': sessionId
+  })
+
+  // gtag('event', 'page_view_activity', {'pageActivityId': pageViewActivityId});
+  // gtag('event', 'session_start', {'sessionId': sessionId});
 
   // ga('create', 'UA-137952485-1', 'auto');
 
