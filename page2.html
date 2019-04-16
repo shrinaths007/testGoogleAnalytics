@@ -27,6 +27,7 @@ function uuid4() {
 }
 
   var sessionId = sessionStorage.getItem('sessionId');
+  var pageViewActivityId = uuid4();
   if (!sessionId) {
     sessionId = uuid4();
     sessionStorage.setItem('sessionId', sessionId);
@@ -39,12 +40,12 @@ function uuid4() {
     'custom_map': {
       'dimension1': 'clientId',
       'dimension2': 'sessionId',
-      'dimension3': 'pageViewId'
+      'dimension3': 'pageActivityId'
     }
   });
 
+  gtag('event', 'page_view_activity', {'pageActivityId': pageViewActivityId});
   gtag('event', 'session_start', {'sessionId': sessionId});
-  gtag('event', 'pageview', {'pageViewId': uuid4()});
 
   // ga('create', 'UA-137952485-1', 'auto');
 
