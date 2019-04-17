@@ -18,12 +18,12 @@
 <script src="https://www.googletagmanager.com/gtag/js?id=UA-137952485-1"></script>
 <script>
 
-function uuid4() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-    return v.toString(16);
-  });
-}
+  function uuid4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
 
   var sessionId = sessionStorage.getItem('sessionId');
   var pageViewActivityId = uuid4();
@@ -51,11 +51,11 @@ function uuid4() {
 
   // ga('create', 'UA-137952485-1', 'auto');
 
-  ga(function(tracker) {
-    var clientId = tracker.get('clientId');
-    console.log('Cliend ID', clientId);
-    ga('set', 'ga:dimension4', clientId);
-  });
+  // ga(function(tracker) {
+  //   var clientId = tracker.get('clientId');
+  //   console.log('Cliend ID', clientId);
+  //   ga('set', 'ga:dimension4', clientId);
+  // });
 </script>
 
 </html>
