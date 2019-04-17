@@ -39,8 +39,7 @@
     'custom_map': {
       'dimension1': 'clientId',
       'dimension2': 'sessionId',
-      'dimension3': 'pageActivityId',
-      'dimension4': 'testDimensionValue'
+      'dimension3': 'pageActivityId'
     },
     'send_page_view': false
   });
@@ -50,16 +49,16 @@
     'sessionId': sessionId
   });
 
-  gtag('event', 'test_custom_event', { 'testDimensionValue': uuid4() });
-  gtag('event', 'login', { 'method': 'Google' });
+  // gtag('event', 'test_custom_event', { 'testDimensionValue': uuid4() });
+  // gtag('event', 'login', { 'method': 'Google' });
 
   // ga('create', 'UA-137952485-1', 'auto');
 
-  // ga(function(tracker) {
-  //   var clientId = tracker.get('clientId');
-  //   console.log('Cliend ID', clientId);
-  //   ga('set', 'ga:dimension4', clientId);
-  // });
+  ga(function(tracker) {
+    // var clientId = tracker.get('clientId');
+    // console.log('Cliend ID', clientId);
+    ga('set', 'dimension4', uuid4());
+  });
 </script>
 
 </html>
