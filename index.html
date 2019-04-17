@@ -38,7 +38,8 @@
     'custom_map': {
       'dimension1': 'clientId',
       'dimension2': 'sessionId',
-      'dimension3': 'pageActivityId'
+      'dimension3': 'pageActivityId',
+      'dimension4': 'testDimensionValue'
     },
     'send_page_view': false
   });
@@ -47,6 +48,10 @@
     'pageActivityId': pageViewActivityId,
     'sessionId': sessionId
   });
+
+  gtag('event', 'test_custom_event', { 'testDimensionValue': uuid4() });
+  gtag('event', 'login', { 'method': 'Google' });
+
   // ga('create', 'UA-137952485-1', 'auto');
 
   // ga(function(tracker) {
