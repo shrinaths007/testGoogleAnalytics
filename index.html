@@ -2,20 +2,55 @@
 <html>
 
 <head>
-  <!-- Google Tag Manager -->
-  <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PJ9XW48');</script> -->
-  <!-- End Google Tag Manager -->
+    <script src="https://www.googletagmanager.com/gtag/js?id=UA-137952485-7"></script>
+    <script>
+      // You can use "Copy Code" to copy the entire script if you are not using
+      // Google Analytics already. If you are using please review the comments for each section below
+      /*Section 1: This is generic Google Analytics function. If you have already are using
+      Google Analytics on your website you can ignore this*/
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      /* Section 1 end*/
+
+      /*Section 2: This is custom script section which you have to put in the html page
+      after the Section 1 */
+
+      function uuid4() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          var r = Math.random() * 16 | 0,
+            v = c == 'x' ? r : (r & 0x3 | 0x8);
+          return v.toString(16);
+        });
+      }
+      var sessionId = sessionStorage.getItem('sessionId');
+      if (!sessionId) {
+        sessionId = uuid4();
+        sessionStorage.setItem('sessionId', sessionId);
+      }
+
+      /*Section 3: Few things to note if you are already using Google Analytics on your website:
+    1. you may be seeting the propertyid already, please add appropriate attribute from the script
+    2. Please set send_page_view to false to ensure we do not get multiple pageviews...*/
+      gtag('js', new Date());
+      gtag('config', 'UA-137952485-7', {
+        'custom_map': {
+          'dimension1': 'clientId',
+          'dimension2': 'sessionId'
+        },
+        'send_page_view': false
+      });
+      gtag('event', 'page_view', {
+        'sessionId': sessionId
+      });
+      /*Section 3 end */
+    </script>
 </head>
 
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJ9XW48"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
-  <!-- End Google Tag Manager (noscript) -->
   <br><br><br><br>
   <h3>Index Page</h3>
   <br><br><br><br>
@@ -23,53 +58,4 @@
   <a href="page3.html">Page 3</a><br>
   <br><br><br><br>
 </body>
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script src="https://www.googletagmanager.com/gtag/js?id=UA-137952485-1"></script>
-<script>
-  function uuid4() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-      return v.toString(16);
-    });
-  }
-
-  var sessionId = sessionStorage.getItem('sessionId');
-  var pageViewActivityId = uuid4();
-  if (!sessionId) {
-    sessionId = uuid4();
-    sessionStorage.setItem('sessionId', sessionId);
-  }
-
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'UA-137952485-1', {
-    'custom_map': {
-      'dimension1': 'clientId',
-      'dimension2': 'sessionId'
-      // 'dimension3': 'pageActivityId'
-    },
-    'send_page_view': false
-  });
-
-  gtag('event', 'page_view', {
-    // 'pageActivityId': pageViewActivityId,
-    'sessionId': sessionId
-  });
-
-  // gtag('event', 'test_custom_event', { 'testDimensionValue': uuid4() });
-  // gtag('event', 'login', { 'method': 'Google' });
-
-  // ga('create', 'UA-137952485-1', 'auto');
-  // ga('set', 'dimension4', uuid4());
-
-  // ga(function(tracker) {
-  //   var clientId = tracker.get('clientId');
-  //   console.log('Cliend ID', clientId);
-  //   ga('set', 'dimension4', uuid4());
-  //   ga('send', 'pageview');
-  // });
-</script>
-
 </html>
